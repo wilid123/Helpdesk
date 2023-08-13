@@ -198,7 +198,7 @@ if (isset($_POST['delete'])) {
                 </tbody>
             </table>
 
-        <!-- Insert Button -->
+            <!-- Insert Button -->
             <button type="button" class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#insertModal">
                 <i class="fa-solid fa-plus"></i>
             </button>
@@ -239,7 +239,7 @@ if (isset($_POST['delete'])) {
     </div>
 
 
-    
+
 </body>
 
 </html>

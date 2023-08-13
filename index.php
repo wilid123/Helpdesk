@@ -52,6 +52,8 @@ if ($level == "Masyarakat") {
   <title>Help Desk</title>
   <link rel="shortcut icon" type="image/png" href="src/assets/images/logos/favicon.png" />
   <link rel="stylesheet" href="src/assets/css/styles.min.css" />
+  <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.6/datatables.min.css" rel="stylesheet">
+  <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.6/datatables.min.js"></script>
 </head>
 
 <body>
@@ -69,7 +71,7 @@ if ($level == "Masyarakat") {
             <i class="ti ti-x fs-8"></i>
           </div>
         </div>
-          
+
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
@@ -113,23 +115,24 @@ if ($level == "Masyarakat") {
         <div class="mt-2"></div>
         <nav class="navbar navbar-expand-lg navbar-light">
           <ul class="navbar-nav">
-              <?php if ($level == "Admin" || $level == "Petugas") : ?>
-                            <li class="nav-item">
-                              <a class="nav-link" href="?module=account">
-                                <p>  <?=$nama_petugas?>, ( <?=$level?> ),</p>
-                              </a>
-                            </li>
-               <?php endif; ?>
-               <?php if ($level == "Masyarakat") : ?>
-                            <li class="nav-item">
-                              <a class="nav-link" href="?module=account">
-                                <p>  <?=$nama?>, ( <?=$level?> )</p>
-                              </a>
-                            </li>
-               <?php endif; ?>
+            <?php if ($level == "Admin" || $level == "Petugas") : ?>
+              <li class="nav-item">
+                <a class="nav-link" href="?module=account">
+                  <p> <?= $nama_petugas ?>, ( <?= $level ?> ),</p>
+                </a>
+              </li>
+            <?php endif; ?>
+            <?php if ($level == "Masyarakat") : ?>
+              <li class="nav-item">
+                <a class="nav-link" href="?module=account">
+                  <p> <?= $nama ?>, ( <?= $level ?> )</p>
+                </a>
+              </li>
+            <?php endif; ?>
             <li class="nav-item align-items-center text-dark">
               <a class="nav-item">
-                <br><p class="fw-bold"> <?php  include "clock.php"?> </p>
+                <br>
+                <p class="fw-bold"> <?php include "clock.php" ?> </p>
               </a>
             </li>
           </ul>
