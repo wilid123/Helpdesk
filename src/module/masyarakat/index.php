@@ -67,38 +67,36 @@ if (isset($_POST['delete'])) {
     $foto = $_POST['foto'];
     $direktori = "src/account/img/";
 
-    if($foto == 'UserImage.png'){
+    if ($foto == 'UserImage.png') {
         // Hapus entri dari database
-    $query = mysqli_query($conn, "DELETE FROM masyarakat WHERE id_masyarakat = '$_POST[id_masyarakat]'");
+        $query = mysqli_query($conn, "DELETE FROM masyarakat WHERE id_masyarakat = '$_POST[id_masyarakat]'");
 
-    if ($query) {
-        echo "<script>
+        if ($query) {
+            echo "<script>
                 document.location='?module=datamasyarakat';
             </script>";
-    }
-    }
-    else{
-    // Hapus file dari direktori
-    if (file_exists($direktori . $foto)) {
-        if (unlink($direktori . $foto)) {
-            echo "File berhasil dihapus.";
-        } else {
-            echo "Gagal menghapus file.";
         }
     } else {
-        echo "File tidak ditemukan.";
-    }
+        // Hapus file dari direktori
+        if (file_exists($direktori . $foto)) {
+            if (unlink($direktori . $foto)) {
+                echo "File berhasil dihapus.";
+            } else {
+                echo "Gagal menghapus file.";
+            }
+        } else {
+            echo "File tidak ditemukan.";
+        }
 
-    // Hapus entri dari database
-    $query = mysqli_query($conn, "DELETE FROM masyarakat WHERE id_masyarakat = '$_POST[id_masyarakat]'");
+        // Hapus entri dari database
+        $query = mysqli_query($conn, "DELETE FROM masyarakat WHERE id_masyarakat = '$_POST[id_masyarakat]'");
 
-    if ($query) {
-        echo "<script>
+        if ($query) {
+            echo "<script>
                 document.location='?module=datamasyarakat';
             </script>";
-    } 
+        }
     }
-    
 }
 
 ?>
@@ -133,7 +131,7 @@ if (isset($_POST['delete'])) {
             Users
         </div>
         <div class="card-body">
-            <table id="table" class="table border table-hover">
+            <table id="table" class="table border table-hover display">
                 <thead>
                     <tr>
                         <th scope="col">No.</th>
@@ -153,7 +151,7 @@ if (isset($_POST['delete'])) {
                             <td><?= $result["username"] ?></td>
                             <td>
                                 <div class='text-center'>
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#editModal<?= $no ?>" class="btn btn-warning"><i class="fa-solid fa-edit"></i></a>   |
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#editModal<?= $no ?>" class="btn btn-warning"><i class="fa-solid fa-edit"></i></a> |
                                     <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $no ?>" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
                                 </div>
                             </td>
@@ -204,7 +202,7 @@ if (isset($_POST['delete'])) {
                                         <input type="hidden" name="foto" value="<?= $result['foto_masyarakat'] ?>">
                                         <div class="modal-body text-center">
                                             <h5>Apakah anda yakin ingin menghapus data ini? <br><br>
-                                                 <img class="rounded-circle bg-dark mb-3" width="50" height="50" src="src/account/img/<?= $result['foto_masyarakat'] ?>"><br>
+                                                <img class="rounded-circle bg-dark mb-3" width="50" height="50" src="src/account/img/<?= $result['foto_masyarakat'] ?>"><br>
                                                 <span class="fw-bold text-danger mt-3"><?= $result['nama'] ?></span>
                                             </h5>
                                         </div>
@@ -266,7 +264,7 @@ if (isset($_POST['delete'])) {
         </div> -->
 
 
-    </div>
+        </div>
 </body>
 
 </html>
